@@ -5,6 +5,7 @@ import MyComponent from "./components/MyComponent";
 import Counter from "./components/Counter";
 import Say from "./components/Say";
 import EventPractice from "./components/EventPractice";
+import IterationSample from "./components/IterationSample";
 
 function App() {
   const name1 = "리액트";
@@ -29,6 +30,7 @@ function App() {
       <Counter />
       <Say />
       <EventPractice />
+      <IterationSample />
     </>
   );
 }
