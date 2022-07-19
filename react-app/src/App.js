@@ -11,6 +11,8 @@ import Counter03 from "./components/Counter03";
 import Parents from "./components/Parents";
 import Info02 from "./components/Info02";
 import Average from "./components/Average";
+import InputFile from "./components/InputFile";
+import StyleComponents from "./components/StyleComponents";
 
 function App() {
   const name1 = "리액트";
@@ -41,6 +43,8 @@ function App() {
       <Counter03 />
       <Info02 />
       <Average />
+      <InputFile />
+      <StyleComponents />
     </>
   );
 }

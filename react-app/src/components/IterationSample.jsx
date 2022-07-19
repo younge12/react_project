@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 const IterationSample = () => {
   const [names, setNames] = useState([
     { id: 1, text: "얼음" },
@@ -7,14 +7,15 @@ const IterationSample = () => {
     { id: 4, text: "구름" },
   ]);
   const [usename, setUsename] = useState("");
-  const [nextId, setNextId] = useState(5);
+  const nextId = useRef(5);
 
   const handleClick = () => {
     if (usename) {
-      const nexttNames = [...names, { id: nextId, text: usename }];
+      console.log(nextId.current);
+      const nexttNames = [...names, { id: nextId.current, text: usename }];
       setNames(nexttNames);
       setUsename("");
-      setNextId(nextId + 1);
+      nextId.current++;
     }
   };
   const handleDelete = (deleteId) => {
@@ -34,12 +35,12 @@ const IterationSample = () => {
         />
         <button onClick={handleClick}>추가</button>
       </div>
-      <ul>
+      {/* <ul>
         <li>눈사람</li>
         <li>얼음</li>
         <li>눈</li>
         <li>바람</li>
-      </ul>
+      </ul> */}
       <ul>
         {names.map(({ id, text }, index) => (
           <li key={id} onDoubleClick={() => handleDelete(id)}>
