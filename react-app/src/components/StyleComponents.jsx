@@ -4,6 +4,11 @@ const Box = styled.div`
   background: ${(props) => props.color || "blue"};
   padding: 1rem;
   display: flex;
+  width: 500px;
+  margin: 0 auto;
+  @media screen and (max-width: 500px) {
+    width: 200px;
+  }
 `;
 
 const Button = styled.button`
@@ -19,29 +24,32 @@ const Button = styled.button`
   font-weight: 600;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.9)
-      ${(props) =>
-        props.inverted &&
-        css`
-          background: none;
-          border: 2px solid white;
-          color: white;
-          &:hover {
-            background: white;
-            color: black;
-          }
-        `};
+    background: rgba(255, 255, 255, 0.9);
+  }
 
-    & + button {
-      margin-left: 1rem;
-    }
+  ${(props) =>
+    props.inverted &&
+    css`
+      background: none;
+      border: 2px solid white;
+      color: white;
+
+      &:hover {
+        background: white;
+        color: black;
+      }
+    `}
+  &+button {
+    margin-left: 1rem;
   }
 `;
 
 const StyledComponents = () => {
-  <Box color="black">
-    <Button>안녕하세요</Button>
-    <Button inverted={true}>테두리만</Button>
-  </Box>;
+  return (
+    <Box>
+      <Button>안녕하세요</Button>
+      <Button inverted={true}>테두리만</Button>
+    </Box>
+  );
 };
 export default StyledComponents;

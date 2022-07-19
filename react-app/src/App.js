@@ -13,6 +13,7 @@ import Info02 from "./components/Info02";
 import Average from "./components/Average";
 import InputFile from "./components/InputFile";
 import StyleComponents from "./components/StyleComponents";
+import Flex from "./components/Flex";
 
 function App() {
   const name1 = "리액트";
@@ -45,6 +46,7 @@ function App() {
       <Average />
       <InputFile />
       <StyleComponents />
+      <Flex />
     </>
   );
 }
