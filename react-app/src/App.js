@@ -6,6 +6,11 @@ import Counter from "./components/Counter";
 import Say from "./components/Say";
 import EventPractice from "./components/EventPractice";
 import IterationSample from "./components/IterationSample";
+import Counter02 from "./components/Counter02";
+import Counter03 from "./components/Counter03";
+import Parents from "./components/Parents";
+import Info02 from "./components/Info02";
+import Average from "./components/Average";
 
 function App() {
   const name1 = "리액트";
@@ -31,6 +36,11 @@ function App() {
       <Say />
       <EventPractice />
       <IterationSample />
+      <Counter02 />
+      <Parents />
+      <Counter03 />
+      <Info02 />
+      <Average />
     </>
   );
 }
