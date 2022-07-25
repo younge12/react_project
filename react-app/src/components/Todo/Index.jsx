@@ -26,8 +26,7 @@ const Todo = () => {
   };
   const handleChecked = (checkedId) => {
     const nextTodos = todos.map((todo) => {
-      todo.id === checkedId && (todo.checked = !todo.checked);
-      return todo;
+      return todo.id === checkedId ? { ...todo, checked: !todo.checked } : todo;
     });
     setTodos(nextTodos);
   };

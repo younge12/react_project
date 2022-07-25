@@ -4,30 +4,32 @@ import styled from "styled-components";
 const Form = ({ onAdd }) => {
   const inputEl = useRef(null);
   const [text, SetText] = useState("");
-  const handleClick = () => {
+  //   const handleClick = () => {
+  //     onAdd(text);
+  //     SetText("");
+  //     inputEl.current.focus();
+  //   };
+  //   const handleKeyUp = (e) => {
+  //     if (e.key === "Enter") {
+  //       inputEl.current.focus();
+  //     }
+  //   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
     onAdd(text);
     SetText("");
-    inputEl.current.focus();
-  };
-  const handleKeyUp = (e) => {
-    if (e.key === "Enter") {
-      onAdd(text);
-      SetText("");
-      inputEl.current.focus();
-    }
   };
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <InputWrapper>
         <Input
           value={text}
           onChange={(e) => SetText(e.target.value)}
-          onKeyUp={handleKeyUp}
           ref={inputEl}
         />
-        <BtnSubmit onClick={handleClick}>+</BtnSubmit>
+        <BtnSubmit>+</BtnSubmit>
       </InputWrapper>
-    </>
+    </form>
   );
 };
 
