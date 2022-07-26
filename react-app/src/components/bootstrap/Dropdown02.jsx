@@ -9,10 +9,10 @@ const Dropdown = () => {
 
   return (
     <Wrapper ref={wrapperEl}>
-      <Button onClick={() => setActive(!active)}>Dropdown Button</Button>
+      <Button onClick={() => setActive(!active)}>Dropdown Button02</Button>
       {active && (
         <List>
-          <Item>Action</Item>
+          <Item>Action02</Item>
           <Item>Another Action</Item>
           <Item>Somthing Action</Item>
         </List>

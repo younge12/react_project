@@ -6,7 +6,7 @@ const Accordion = ({ data }) => {
   const handleClick = (i) => {
     const nextIndex = index === i ? -1 : i;
     setIndex(nextIndex);
-    // index === i ? setIndex(-1) : setIndex(i);
+    // index === i ? setIndex(-1) : setIndex(i); 안쓰는게 좋음 차라리 if else 구문 사용
   };
   return (
     <List>
