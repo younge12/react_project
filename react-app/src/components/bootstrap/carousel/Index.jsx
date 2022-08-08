@@ -1,22 +1,43 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
+import FadeInImages from "./FadeInImages";
+import SlideImages from "./SlideImages";
 
-const Carousel1 = ({ data }) => {
+const Carousel1 = ({ data, type }) => {
   const [index, setIndex] = useState(0);
+  const isLoding = useRef(false);
+
+  useEffect(() => {
+    const timeoutId = setInterval(() => {
+      handleClick(index + 1);
+    }, 3000);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [index]);
+
+  useEffect(() => {
+    isLoding.current = true;
+    setTimeout(() => {
+      isLoding.current = false;
+    }, 500);
+  }, [index]);
+
   const handleClick = (n) => {
+    if (isLoding.current) return;
     const lastIndex = data.length - 1;
     let nextIndex = n;
     if (n < 0) nextIndex = lastIndex;
     if (n > lastIndex) nextIndex = 0;
     setIndex(nextIndex);
   };
+  const images = {
+    "fade-in": <FadeInImages data={data} index={index} />,
+    slide: <SlideImages data={data} index={index} />,
+  };
   return (
     <Container>
-      <Images>
-        {data.map(({ id, image }, i) => (
-          <Image key={id} src={image} active={index === i} />
-        ))}
-      </Images>
+      {images[type]}
       <BtnLeft onClick={() => handleClick(index - 1)}>이전</BtnLeft>
       <BtnRight onClick={() => handleClick(index + 1)}>다음</BtnRight>
       <Pages>
@@ -39,18 +60,7 @@ const Container = styled.div`
   width: 600px;
   height: 400px;
   margin-bottom: 100px;
-`;
-const Images = styled.div`
-  height: 100%;
-`;
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: ${({ active }) => !active && "0"};
-  transition: all 0.5s;
+  overflow: hidden;
 `;
 
 const Btn = styled.button`
