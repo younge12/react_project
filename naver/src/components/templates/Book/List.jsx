@@ -3,12 +3,10 @@ import styled from "styled-components";
 const List = ({ data }) => {
   return (
     <Container>
-      {data.map(({ link, image, title }) => (
-        <Item key={link}>
+      {data.map(({ title, image }) => (
+        <Item>
           <Thumbnail src={image} />
-          <a href={link} target="_blank" rel="noreferrer">
-            <Name dangerouslySetInnerHTML={{ __html: title }} />
-          </a>
+          <Name>{title}</Name>
         </Item>
       ))}
     </Container>
@@ -26,4 +24,5 @@ const Thumbnail = styled.img`
   width: 100%;
 `;
 const Name = styled.p``;
+
 export default List;
