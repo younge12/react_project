@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-const ModalName = ({ onClose, onChange, name }) => {
+const ModalName = ({ type, name, onClose, onChange }) => {
   const [text, setText] = useState(name);
+
   const handleSubmit = () => {
     onChange(text);
     onClose();
@@ -17,11 +18,10 @@ const ModalName = ({ onClose, onChange, name }) => {
         }}
       >
         <ModalContainer>
-          <Header>이름 바꾸기</Header>
+          <Header>{type} 바꾸기</Header>
           <Body>
             <Input
-              type="text"
-              placeholder="이름을 입력해주세요"
+              placeholder={`${type}을 입력하세요`}
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
@@ -37,56 +37,57 @@ const ModalName = ({ onClose, onChange, name }) => {
 };
 
 const Backdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.7);
-  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
-
 const ModalContainer = styled.div`
   background: #fff;
   width: 400px;
-  padding: 20px;
-  border-radius: 20px;
+  border-radius: 4px;
 `;
-
 const Header = styled.div`
-  font-size: 24px;
-  color: #222;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
 `;
 const Body = styled.div`
-  padding: 15px 0;
+  padding: 15px;
 `;
 const Input = styled.input`
-  width: 100%;
-  border-radius: 5px;
-  padding: 5px 10px;
   border: 1px solid #ddd;
-  box-sizing: Border-box;
+  padding: 10px;
+  width: 100%;
+  border-radius: 4px;
 `;
 const Footer = styled.div`
+  padding: 15px;
+  border-top: 1px solid #ddd;
   display: flex;
   justify-content: flex-end;
 `;
-const Btn = styled.button`
-  padding: 5px 10px;
+const BtnClose = styled.button`
+  background: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
+  padding: 5px 10px;
   cursor: pointer;
 `;
-const BtnClose = styled(Btn)`
-  background: #fff;
-  margin-right: 10px;
-`;
-const BtnSubmit = styled(Btn)`
-  background: #222;
+const BtnSubmit = styled.button`
+  margin-left: 10px;
+  background: #1b4c4c;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
   color: #fff;
+  cursor: pointer;
 `;
 
 export default ModalName;

@@ -8,27 +8,51 @@ import Dropdown02 from "./Dropdown02";
 import Carousel from "./carousel/Index";
 import images from "../../datas/Images";
 import ModalName from "./modal/MoadlName";
+import Modal from "./modal";
 
 const Bootstrap = () => {
-  const [modal, setModal] = useState(false);
+  const [show, setShow] = useState(false);
+  const [showModalNickname, setShowModalNickname] = useState(false);
   const [name, setName] = useState("홍길동");
+  const [nickname, setNickname] = useState("별명");
+
   return (
     <Layout>
+      <button onClick={() => setShow(!show)}>버튼</button>
       <Accordion data={data1} />
       <Accordion data={data2} />
-      <Dropdown />
+      {show && <Dropdown />}
       <Dropdown02 />
       <Carousel data={images} type="fade-in" />
       <Carousel data={images} type="slide" />
+
       <div>
         {name}
-        <button onClick={() => setModal(true)}>모달</button>
+        <Modal
+          activator={(onOpen) => <button onClick={onOpen}>이름 바꾸기</button>}
+          content={(onClose) => (
+            <ModalName
+              type="이름"
+              name={name}
+              onClose={onClose}
+              onChange={(val) => setName(val)}
+            />
+          )}
+        />
       </div>
-      {modal && (
+      <div>
+        {nickname}
+        <button onClick={() => setShowModalNickname(true)}>
+          닉네임 바꾸기
+        </button>
+      </div>
+
+      {showModalNickname && (
         <ModalName
-          onClose={() => setModal(false)}
-          name={name}
-          onChange={(val) => setName(val)}
+          type="닉네임"
+          name={nickname}
+          onClose={() => setShowModalNickname(false)}
+          onChange={(val) => setNickname(val)}
         />
       )}
     </Layout>
