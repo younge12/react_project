@@ -27,7 +27,7 @@ const Book = () => {
       setTotal(0);
     }
     if (qsPage) {
-      setPage(qsPage);
+      setPage(+qsPage);
     }
   }, [qsQuery, qsPage]);
 
