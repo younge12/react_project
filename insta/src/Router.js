@@ -4,11 +4,19 @@ import Main from "./components/pages/Main";
 import SignUp from "./components/pages/SignUp";
 import LogIn from "./components/pages/LogIn";
 
+import LoginCheck from "./components/LoginCheck";
+
+import Header from "./components/organisms/Header";
+
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route element={<LoginCheck />}>
+          <Route element={<Header />}>
+            <Route path="/" element={<Main />} />
+          </Route>
+        </Route>
         <Route path="/log-in" element={<LogIn />} />
         <Route path="/sign-up" element={<SignUp />} />
       </Routes>

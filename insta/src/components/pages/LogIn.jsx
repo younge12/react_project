@@ -16,8 +16,11 @@ import {
 
 import authApis from "../../apis/auth";
 import instance from "../../apis";
+import { useSetRecoilState } from "recoil";
+import isLoginState from "../../stores/isLoginState";
 
 const LogIn = () => {
+  const SetIsLogin = useSetRecoilState(isLoginState);
   const navigate = useNavigate();
   const [form, setForm] = useState({
     userName: "",
@@ -39,9 +42,10 @@ const LogIn = () => {
     if (!success) return alert(message);
 
     instance.defaults.headers.common["Authorization"] = "Bearer" + token;
+    localStorage.token = token;
 
-    // alert("로그인 성공");
-    // navigate("/");
+    SetIsLogin(true);
+    navigate("/");
   };
   return (
     <Layout>
