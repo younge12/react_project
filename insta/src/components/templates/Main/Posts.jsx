@@ -51,6 +51,9 @@ const Images = styled.div``;
 const Image = styled.img`
   width: 100%;
 `;
-const Body = styled.div``;
+const Body = styled.div`
+  padding: 10px;
+  box-sizing: Border-box;
+`;
 
 export default Posts;

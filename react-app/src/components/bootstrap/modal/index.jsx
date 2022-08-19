@@ -1,4 +1,4 @@
-import { useEffect , useState} from "react";
+import { useState } from "react";
 
 // 장점1. modal불러 올때마다 useState선언 안해도 됨
 // 장점2. 버튼코드와 모달코드가 가까운 곳에 있음
